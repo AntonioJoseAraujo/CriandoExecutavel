@@ -4,11 +4,18 @@ from cx_Freeze import setup, Executable
 
 
 # Definir o que deve ser incluído na pasta final
-arquivos = ['dados.txt', 'musicas/']
+arquivos = ['circulo.ico', 'dados.txt', 'musicas/']
+
+# Comando para esconder console em aplicações onde não quer que o console seja exibido
+base = None
+if sys.platform == 'win32':
+    base = 'Win32GUI'
+
 # Saida de arquivos
 configuracao = Executable(
     script='app.py',
-    icon='circulo.ico'
+    icon='circulo.ico',
+    base= base
 )
 # Configurar o executável
 setup(
